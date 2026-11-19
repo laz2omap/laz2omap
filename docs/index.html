@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laz2omap – lidar coverage</title>
+<link rel="icon" href="laz2omap_icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+ :root { --pink:#c4148f; --blue:#18a8de; --ink:#1d2433; --muted:#5b6478; --line:#d9dee8; }
+ * { box-sizing:border-box; }
+ html, body { margin:0; height:100%; font:14px/1.45 system-ui, "Segoe UI", sans-serif; color:var(--ink); background:#fff; }
+ body { display:flex; flex-direction:column; }
+ header { display:flex; flex-wrap:wrap; align-items:center; gap:10px 16px; padding:10px 16px; border-bottom:1px solid var(--line); }
+ header img { width:40px; height:40px; border-radius:8px; }
+ header h1 { font-size:18px; margin:0; } header .sub { color:var(--muted); font-size:13px; }
+ .grow { flex:1; }
+ a.btn { display:inline-block; padding:8px 14px; border-radius:8px; font-weight:700; text-decoration:none; white-space:nowrap; }
+ a.req { background:var(--pink); color:#fff; font-size:15px; box-shadow:0 2px 6px rgba(196,20,143,.35); }
+ a.dl { background:#fff; color:var(--ink); border:1px solid var(--line); }
+ #lang a { color:var(--muted); text-decoration:none; padding:1px 5px; border-radius:4px; font-size:12px; } #lang a.on { background:var(--pink); color:#fff; }
+ #map { flex:1; min-height:300px; }
+ .key { background:rgba(255,255,255,.94); padding:6px 9px; border-radius:6px; font-size:12.5px; line-height:1.7; box-shadow:0 1px 4px rgba(0,0,0,.25); }
+ .key span { display:inline-block; width:13px; height:13px; border-radius:2px; vertical-align:-2px; margin-right:6px; }
+ .leaflet-popup-content { font-size:13px; min-width:230px; max-width:320px; }
+ .leaflet-popup-content h3 { margin:0 0 4px; font-size:15px; }
+ .leaflet-popup-content ul { margin:4px 0 6px; padding-left:18px; } .leaflet-popup-content li { margin:2px 0; }
+ .tagp { display:inline-block; padding:1px 7px; border-radius:10px; font-size:11.5px; font-weight:700; color:#fff; }
+ .muted { color:var(--muted); font-size:12px; }
+ @media (max-width:600px) { header .sub { display:none; } a.btn { padding:7px 10px; font-size:13px; } }
+</style></head><body>
+<header>
+  <img src="laz2omap_icon.png" alt="">
+  <div><h1 id="t-title">Laz2omap: where the lidar is</h1><div class="sub" id="t-sub">Click a coloured area to see where its lidar comes from.</div></div>
+  <div class="grow"></div>
+  <a class="btn req" id="b-req" target="_blank" rel="noopener" href="https://github.com/laz2omap/laz2omap/issues/new?template=3-country.yml">🌍 Request a country</a>
+  <a class="btn dl" id="b-dl" href="https://github.com/laz2omap/laz2omap/releases/latest">⬇ Download Laz2omap</a>
+  <div id="lang"><a href="#" data-l="en">EN</a> <a href="#" data-l="fr">FR</a></div>
+</header>
+<div id="map"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+let LANG = (localStorage.getItem('l2o.lang') || (navigator.language || 'en')).slice(0, 2) === 'fr' ? 'fr' : 'en';
+const T = (en, fr) => LANG === 'fr' ? fr : en;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
+const REQ = 'https://github.com/laz2omap/laz2omap/issues/new?template=3-country.yml';
+const req = c => REQ + (c ? '&country=' + encodeURIComponent(c) : '');
+function texts() {
+  document.documentElement.lang = LANG;
+  document.getElementById('t-title').textContent = T('Laz2omap: where the lidar is', 'Laz2omap : où est le lidar');
+  document.getElementById('t-sub').textContent = T('Click a coloured area to see where its lidar comes from.', 'Cliquez une zone colorée pour voir d’où vient son lidar.');
+  document.getElementById('b-req').textContent = T('🌍 Request a country', '🌍 Demander un pays');
+  document.getElementById('b-dl').textContent = T('⬇ Download Laz2omap', '⬇ Télécharger Laz2omap');
+  document.querySelectorAll('#lang a').forEach(a => a.classList.toggle('on', a.dataset.l === LANG));
+}
+document.querySelectorAll('#lang a').forEach(a => a.onclick = e => { e.preventDefault(); localStorage.setItem('l2o.lang', a.dataset.l); location.reload(); });
+texts();
+
+const map = L.map('map', {worldCopyJump: true}).setView([45, -20], 3);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 12,
+  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+const key = L.control({position: 'bottomleft'});
+key.onAdd = () => { const d = L.DomUtil.create('div', 'key');
+  d.innerHTML = `<span style="background:rgba(196,20,143,.5)"></span>${T('Laz2omap downloads it for you', 'Laz2omap le télécharge pour vous')}<br>` +
+    `<span style="background:rgba(24,168,222,.5)"></span>${T('Lidar exists: download it yourself', 'Le lidar existe : à télécharger vous-même')}<br>` +
+    `<span style="background:#fff;border:1px solid #ccc"></span>${T('Not listed yet: ', 'Pas encore listé : ')}<a href="${REQ}" target="_blank" rel="noopener">${T('request it', 'demandez-le')}</a>`;
+  return d; };
+key.addTo(map);
+
+const li = s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)}</a>` + (s.years ? ` (${esc(s.years)})` : '') +
+  ((LANG === 'fr' ? s.note_fr : s.note_en) ? ` <span class="muted">${esc(LANG === 'fr' ? s.note_fr : s.note_en)}</span>` : '') + '</li>';
+function popup(p) {
+  const name = LANG === 'fr' ? p.name_fr : p.name_en;
+  if (p.kind === 'auto') return `<h3>${esc(name)}</h3><span class="tagp" style="background:var(--pink)">${T('Automatic in Laz2omap', 'Automatique dans Laz2omap')}</span>` +
+    `<p>${T('Find lidar downloads it for you, from:', 'Trouver le lidar le télécharge pour vous, depuis :')}<br><b>${esc(p.provider)}</b></p>` +
+    (p.also.length ? `<p class="muted" style="margin-bottom:0">${T('Also available, newer or better, to download yourself:', 'Aussi disponible, plus récent ou meilleur, à télécharger vous-même :')}</p><ul>${p.also.map(li).join('')}</ul>` : '') +
+    `<a href="${req(name)}" target="_blank" rel="noopener">${T('Something missing? Tell us', 'Il manque quelque chose ? Dites-le-nous')}</a>`;
+  return `<h3>${esc(name)}</h3><span class="tagp" style="background:var(--blue)">${T('Download it yourself', 'À télécharger vous-même')}</span>` +
+    `<p style="margin-bottom:0">${T('Lidar available through:', 'Lidar disponible auprès de :')}</p><ul>${p.sources.map(li).join('')}</ul>` +
+    `<p class="muted">${T('Download it from their website, then use Add my own tiles… in Laz2omap.', 'Téléchargez-le sur leur site, puis utilisez Ajouter mes propres tuiles… dans Laz2omap.')}</p>` +
+    `<a class="btn req" style="font-size:13px;padding:6px 10px" href="${req(name)}" target="_blank" rel="noopener">🌍 ${T('Ask for automatic download', 'Demander le téléchargement automatique')}</a>`;
+}
+fetch('coverage.geojson').then(r => r.json()).then(gj => {
+  const order = f => f.properties.kind === 'auto' ? 1 : 0;          // pink drawn over blue
+  gj.features.sort((a, b) => order(a) - order(b));
+  L.geoJSON(gj, {
+    style: f => f.properties.kind === 'auto' ? {color: '#c4148f', weight: 1, fillColor: '#c4148f', fillOpacity: 0.38}
+                                             : {color: '#18a8de', weight: 1, fillColor: '#18a8de', fillOpacity: 0.35},
+    onEachFeature: (f, l) => l.on('click', e => { L.DomEvent.stopPropagation(e);   // the map's own click: empty places only
+      L.popup({maxWidth: 340}).setLatLng(e.latlng).setContent(popup(f.properties)).openOn(map); })
+  }).addTo(map);
+});
+map.on('click', e => {                                  // a place with nothing listed: offer to request it
+  L.popup().setLatLng(e.latlng).setContent(`<h3>${T('No lidar listed here yet', 'Pas encore de lidar listé ici')}</h3>` +
+    `<p>${T('Know where it is, or want it in Laz2omap?', 'Vous savez où il est, ou vous le voulez dans Laz2omap ?')}</p>` +
+    `<a class="btn req" style="font-size:13px;padding:6px 10px" href="${REQ}" target="_blank" rel="noopener">🌍 ${T('Request a country', 'Demander un pays')}</a>`).openOn(map);
+});
+</script>
+</body></html>

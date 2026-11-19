@@ -1,0 +1,22 @@
+# Tags each idea / problem with the part of Laz2omap it is about, from the form's "Where in Laz2omap?" answer.
+name: Tag requests
+on:
+  issues:
+    types: [opened, edited]
+permissions:
+  issues: write
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            const m = body.match(/### Where in Laz2omap\?[^\n]*\n+([^\n]+)/);
+            if (!m) return;
+            const areas = [[/Find lidar/i, 'area: find lidar'], [/Make a map/i, 'area: make a map'], [/Adjust/i, 'area: adjust'],
+                           [/OpenOrienteering|OOM/i, 'area: OOM map'], [/Install/i, 'area: install'], [/guides/i, 'area: guides']];
+            const hit = areas.find(([re]) => re.test(m[1]));
+            if (hit) await github.rest.issues.addLabels({owner: context.repo.owner, repo: context.repo.repo,
+                                                         issue_number: context.issue.number, labels: [hit[1]]});

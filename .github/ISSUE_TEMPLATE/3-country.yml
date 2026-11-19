@@ -8,6 +8,8 @@ body:
       value: |
         Thanks! Laz2omap downloads lidar by itself in some countries (pink on its map) and lists where to get it in others (blue). Tell us where you'd like it.
         Merci ! Laz2omap télécharge le lidar lui-même dans certains pays (en rose sur sa carte) et indique où l'obtenir dans d'autres (en bleu). Dites-nous où vous le voudriez.
+        **Already asked? Add a 👍 to it instead / Déjà demandé ? Ajoutez-y plutôt un 👍:** https://github.com/laz2omap/laz2omap/issues?q=is%3Aissue+label%3Acountry
+        Coverage map / Carte de couverture: https://laz2omap.github.io/laz2omap/
         **This page is public / Cette page est publique.**
   - type: input
     id: country

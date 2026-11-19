@@ -4,7 +4,7 @@
 
 **Draft orienteering maps from lidar, for OpenOrienteering Mapper.**
 Laz2omap finds the lidar of your area, downloads it, and makes a draft map (ISOM 2017-2 / ISSprOM 2019) that you
-then check in the field and finish in OpenOrienteering Mapper.
+then check in the field and finish in OpenOrienteering Mapper. **[🗺 See where the lidar is](https://laz2omap.github.io/laz2omap/)**
 
 <p align="center"><img src="cycle_en.png" width="600" alt="Laz2omap produces and adjusts the draft map, you check it in the field, finish it in OpenOrienteering Mapper, and bring bulk adjustments back to Laz2omap"></p>
 
@@ -52,14 +52,23 @@ A short form opens (a free GitHub account is needed to send it). English or Fren
 [Issues](https://github.com/laz2omap/laz2omap/issues). / Un court formulaire s'ouvre (un compte GitHub gratuit est
 nécessaire pour l'envoyer). En anglais ou en français.
 
-## Where the lidar comes from
+## Where the lidar is / Où est le lidar
 
-Automatic download: Québec, the rest of Canada (NRCan, Ontario FRI), the USA (USGS 3DEP), Poland, France, Denmark,
-Saxony, England, Switzerland, Estonia, Lithuania, Spain and Finland (pink on Laz2omap's map). In many other countries
-(blue) it lists where to get the lidar and takes your own .laz tiles.
+**[🗺 Open the interactive coverage map / Ouvrir la carte interactive](https://laz2omap.github.io/laz2omap/)**: click a country to see where its lidar
+comes from and where to download it. / cliquez un pays pour voir d'où vient son lidar et où le télécharger.
 
-**Your country missing, or better lidar elsewhere? [🌍 Request a country](https://github.com/laz2omap/laz2omap/issues/new?template=3-country.yml).** / **Votre pays manque, ou un
-meilleur lidar existe ailleurs ? [🌍 Demandez un pays](https://github.com/laz2omap/laz2omap/issues/new?template=3-country.yml).**
+<p align="center"><a href="https://laz2omap.github.io/laz2omap/"><img src="coverage_map.png" width="760" alt="Lidar coverage map: pink = Laz2omap downloads it, blue = download it yourself"></a></p>
+
+**Pink:** Laz2omap downloads the lidar for you. **Blue:** the lidar exists; Laz2omap tells you where to download it,
+then takes your .laz tiles. / **Rose :** Laz2omap télécharge le lidar pour vous. **Bleu :** le lidar existe ; Laz2omap
+vous dit où le télécharger, puis prend vos tuiles .laz.
+
+### [🌍 Request a country / Demander un pays](https://github.com/laz2omap/laz2omap/issues/new?template=3-country.yml)
+
+Your country missing, or better lidar elsewhere? Ask for it: the most requested come first. Already asked?
+[Add a 👍 to it](https://github.com/laz2omap/laz2omap/issues?q=is%3Aissue+label%3Acountry). / Votre pays manque, ou
+un meilleur lidar existe ailleurs ? Demandez-le : les plus demandés passent en premier. Déjà demandé ?
+[Ajoutez-y un 👍](https://github.com/laz2omap/laz2omap/issues?q=is%3Aissue+label%3Acountry).
 
 ## Licence
 
