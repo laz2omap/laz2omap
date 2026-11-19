@@ -1,0 +1,36 @@
+name: "🌍 Request a country / Demander un pays"
+description: "Lidar for your country or region in Find lidar. / Le lidar de votre pays ou région dans Trouver le lidar."
+title: "Country: "
+labels: ["country"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Laz2omap downloads lidar by itself in some countries (pink on its map) and lists where to get it in others (blue). Tell us where you'd like it.
+        Merci ! Laz2omap télécharge le lidar lui-même dans certains pays (en rose sur sa carte) et indique où l'obtenir dans d'autres (en bleu). Dites-nous où vous le voudriez.
+        **This page is public / Cette page est publique.**
+  - type: input
+    id: country
+    attributes:
+      label: "Country, state or region / Pays, État ou région"
+    validations:
+      required: true
+  - type: dropdown
+    id: now
+    attributes:
+      label: "On Laz2omap's map today, it is… / Sur la carte de Laz2omap aujourd'hui, c'est…"
+      options:
+        - "Not coloured / Pas coloré"
+        - "Blue (download it yourself) / Bleu (à télécharger vous-même)"
+        - "Pink, but newer or better lidar exists / Rose, mais du lidar plus récent ou meilleur existe"
+        - "I don't know / Je ne sais pas"
+  - type: textarea
+    id: source
+    attributes:
+      label: "Where the lidar is, if you know (optional) / Où est le lidar, si vous le savez (facultatif)"
+      description: "A link to the provider's site or download page, the years, the licence. / Un lien vers le site ou la page de téléchargement du fournisseur, les années, la licence."
+  - type: textarea
+    id: why
+    attributes:
+      label: "Your club or event (optional) / Votre club ou événement (facultatif)"
+      description: "Helps us see where it's needed. / Nous aide à voir où c'est utile."
