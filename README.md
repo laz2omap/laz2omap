@@ -6,6 +6,8 @@
 Laz2omap finds the lidar of your area, downloads it, and makes a draft map (ISOM 2017-2 / ISSprOM 2019) that you
 then check in the field and finish in OpenOrienteering Mapper.
 
+<p align="center"><img src="cycle_en.png" width="600" alt="Laz2omap produces and adjusts the draft map, you check it in the field, finish it in OpenOrienteering Mapper, and bring bulk adjustments back to Laz2omap"></p>
+
 ## Download (Windows)
 
 **[⬇ Download the latest Laz2omap-Setup.exe](https://github.com/laz2omap/laz2omap/releases/latest)**
@@ -21,6 +23,8 @@ The guides (English cheat sheet and French *pense-bête*) are on the same releas
 Laz2omap is installed.
 
 ## Téléchargement (Windows)
+
+<p align="center"><img src="cycle_fr.png" width="600" alt="Laz2omap produit et ajuste l'ébauche de carte, vous la vérifiez sur le terrain, la finissez dans OpenOrienteering Mapper, et revenez à Laz2omap pour les ajustements d'ensemble"></p>
 
 **[⬇ Télécharger le dernier Laz2omap-Setup.exe](https://github.com/laz2omap/laz2omap/releases/latest)**
 
