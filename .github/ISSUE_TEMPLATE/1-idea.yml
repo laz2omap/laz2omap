@@ -1,0 +1,34 @@
+name: "💡 Suggest an idea / Proposer une idée"
+description: "Something Laz2omap could do, or do better. / Ce que Laz2omap pourrait faire, ou mieux faire."
+title: "Idea: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Write in English or French. **This page is public:** don't post personal details or private places.
+        Merci ! En anglais ou en français. **Cette page est publique :** n'y mettez pas d'informations personnelles ni de lieux privés.
+  - type: textarea
+    id: idea
+    attributes:
+      label: "Your idea / Votre idée"
+      description: "What would help you, and why? A picture or a map example is welcome. / Qu'est-ce qui vous aiderait, et pourquoi ? Une image ou un exemple de carte est bienvenu."
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: "Where in Laz2omap? / Où dans Laz2omap ?"
+      options:
+        - "1 - Find lidar / Trouver le lidar"
+        - "2 - Make a map / Faire une carte"
+        - "3 - Adjust / Ajuster"
+        - "The map in OpenOrienteering Mapper / La carte dans OOM"
+        - "Installing / L'installation"
+        - "The guides / Les guides"
+        - "Other / Autre"
+  - type: input
+    id: country
+    attributes:
+      label: "Country or region (optional) / Pays ou région (facultatif)"
+      description: "Helps for lidar sources and local mapping styles. / Utile pour les sources de lidar et les styles locaux."

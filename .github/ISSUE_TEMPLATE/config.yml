@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "⬇ Download Laz2omap / Télécharger Laz2omap"
+    url: https://github.com/laz2omap/laz2omap/releases/latest
+    about: "The latest Laz2omap-Setup.exe and the guides. / Le dernier Laz2omap-Setup.exe et les guides."

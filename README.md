@@ -36,6 +36,16 @@ Laz2omap is installed.
 Pas de mot de passe administrateur, rien d'autre à installer. Vos cartes et réglages vont dans **Documents\Laz2omap**.
 Pour mettre à jour, lancez le Setup plus récent : votre lidar, vos cartes et vos réglages restent.
 
+## Ideas or problems? / Des idées ou un problème ?
+
+**[💡 Suggest an idea / Proposer une idée](https://github.com/laz2omap/laz2omap/issues/new?template=1-idea.yml)**
+&nbsp;·&nbsp;
+**[🐞 Report a problem / Signaler un problème](https://github.com/laz2omap/laz2omap/issues/new?template=2-problem.yml)**
+
+A short form opens (a free GitHub account is needed to send it). English or French. See what others asked in
+[Issues](https://github.com/laz2omap/laz2omap/issues). / Un court formulaire s'ouvre (un compte GitHub gratuit est
+nécessaire pour l'envoyer). En anglais ou en français.
+
 ## Where the lidar comes from
 
 Automatic download: Québec, the rest of Canada (NRCan, Ontario FRI), the USA (USGS 3DEP), Poland, France, Denmark,

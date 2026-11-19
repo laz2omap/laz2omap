@@ -1,0 +1,41 @@
+name: "🐞 Report a problem / Signaler un problème"
+description: "Something doesn't work or looks wrong. / Quelque chose ne marche pas ou semble faux."
+title: "Problem: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! Write in English or French. **This page is public:** don't post personal details or private places.
+        Merci ! En anglais ou en français. **Cette page est publique :** n'y mettez pas d'informations personnelles ni de lieux privés.
+  - type: textarea
+    id: what
+    attributes:
+      label: "What happened? / Que s'est-il passé ?"
+      description: "What you did, what you expected, what you got. A screenshot helps (paste it here). / Ce que vous avez fait, ce que vous attendiez, ce qui est arrivé. Une capture d'écran aide (collez-la ici)."
+    validations:
+      required: true
+  - type: textarea
+    id: message
+    attributes:
+      label: "Error message (optional) / Message d'erreur (facultatif)"
+      description: "Copy the red text from the page, or the last lines of the black window. / Copiez le texte rouge de la page, ou les dernières lignes de la fenêtre noire."
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: "Laz2omap version / Version de Laz2omap"
+      description: "Shown under the page's title, e.g. 5.45.5 / Affichée sous le titre de la page, p. ex. 5.45.5"
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: "Where in Laz2omap? / Où dans Laz2omap ?"
+      options:
+        - "1 - Find lidar / Trouver le lidar"
+        - "2 - Make a map / Faire une carte"
+        - "3 - Adjust / Ajuster"
+        - "The map in OpenOrienteering Mapper / La carte dans OOM"
+        - "Installing or starting / L'installation ou le démarrage"
+        - "Other / Autre"
