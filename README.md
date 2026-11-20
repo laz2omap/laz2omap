@@ -57,11 +57,12 @@ nécessaire pour l'envoyer). En anglais ou en français.
 **[🗺 Open the interactive coverage map / Ouvrir la carte interactive](https://laz2omap.github.io/laz2omap/)**: click a country to see where its lidar
 comes from and where to download it. / cliquez un pays pour voir d'où vient son lidar et où le télécharger.
 
-<p align="center"><a href="https://laz2omap.github.io/laz2omap/"><img src="coverage_map.png" width="760" alt="Lidar coverage map: pink = Laz2omap downloads it, blue = download it yourself"></a></p>
+<p align="center"><a href="https://laz2omap.github.io/laz2omap/"><img src="coverage_map.png" width="760" alt="Lidar coverage map: pink = Laz2omap downloads it, blue = available from the provider"></a></p>
 
-**Pink:** Laz2omap downloads the lidar for you. **Blue:** the lidar exists; Laz2omap tells you where to download it,
-then takes your .laz tiles. / **Rose :** Laz2omap télécharge le lidar pour vous. **Bleu :** le lidar existe ; Laz2omap
-vous dit où le télécharger, puis prend vos tuiles .laz.
+**Pink:** Laz2omap downloads the lidar for you. **Blue:** the lidar is available from the provider; Laz2omap shows you
+where to get it, then makes the map from your .laz tiles. / **Rose :** Laz2omap télécharge le lidar pour vous.
+**Bleu :** le lidar est disponible chez le fournisseur ; Laz2omap vous montre où l'obtenir, puis fait la carte avec vos
+tuiles .laz.
 
 ### [🌍 Request a country / Demander un pays](https://github.com/laz2omap/laz2omap/issues/new?template=3-country.yml)
 

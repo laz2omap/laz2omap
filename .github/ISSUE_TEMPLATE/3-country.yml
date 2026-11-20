@@ -23,7 +23,7 @@ body:
       label: "On Laz2omap's map today, it is… / Sur la carte de Laz2omap aujourd'hui, c'est…"
       options:
         - "Not coloured / Pas coloré"
-        - "Blue (download it yourself) / Bleu (à télécharger vous-même)"
+        - "Blue (available from the provider) / Bleu (disponible chez le fournisseur)"
         - "Pink, but newer or better lidar exists / Rose, mais du lidar plus récent ou meilleur existe"
         - "I don't know / Je ne sais pas"
   - type: textarea

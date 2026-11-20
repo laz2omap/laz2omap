@@ -59,7 +59,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 12,
 const key = L.control({position: 'bottomleft'});
 key.onAdd = () => { const d = L.DomUtil.create('div', 'key');
   d.innerHTML = `<span style="background:rgba(196,20,143,.5)"></span>${T('Laz2omap downloads it for you', 'Laz2omap le télécharge pour vous')}<br>` +
-    `<span style="background:rgba(24,168,222,.5)"></span>${T('Lidar exists: download it yourself', 'Le lidar existe : à télécharger vous-même')}<br>` +
+    `<span style="background:rgba(24,168,222,.5)"></span>${T('Available from the provider', 'Disponible chez le fournisseur')}<br>` +
     `<span style="background:#fff;border:1px solid #ccc"></span>${T('Not listed yet: ', 'Pas encore listé : ')}<a href="${REQ}" target="_blank" rel="noopener">${T('request it', 'demandez-le')}</a>`;
   return d; };
 key.addTo(map);
@@ -70,11 +70,11 @@ function popup(p) {
   const name = LANG === 'fr' ? p.name_fr : p.name_en;
   if (p.kind === 'auto') return `<h3>${esc(name)}</h3><span class="tagp" style="background:var(--pink)">${T('Automatic in Laz2omap', 'Automatique dans Laz2omap')}</span>` +
     `<p>${T('Find lidar downloads it for you, from:', 'Trouver le lidar le télécharge pour vous, depuis :')}<br><b>${esc(p.provider)}</b></p>` +
-    (p.also.length ? `<p class="muted" style="margin-bottom:0">${T('Also available, newer or better, to download yourself:', 'Aussi disponible, plus récent ou meilleur, à télécharger vous-même :')}</p><ul>${p.also.map(li).join('')}</ul>` : '') +
+    (p.also.length ? `<p class="muted" style="margin-bottom:0">${T('Also available, newer or better, from the provider:', 'Aussi disponible, plus récent ou meilleur, chez le fournisseur :')}</p><ul>${p.also.map(li).join('')}</ul>` : '') +
     `<a href="${req(name)}" target="_blank" rel="noopener">${T('Something missing? Tell us', 'Il manque quelque chose ? Dites-le-nous')}</a>`;
-  return `<h3>${esc(name)}</h3><span class="tagp" style="background:var(--blue)">${T('Download it yourself', 'À télécharger vous-même')}</span>` +
+  return `<h3>${esc(name)}</h3><span class="tagp" style="background:var(--blue)">${T('Available from the provider', 'Disponible chez le fournisseur')}</span>` +
     `<p style="margin-bottom:0">${T('Lidar available through:', 'Lidar disponible auprès de :')}</p><ul>${p.sources.map(li).join('')}</ul>` +
-    `<p class="muted">${T('Download it from their website, then use Add my own tiles… in Laz2omap.', 'Téléchargez-le sur leur site, puis utilisez Ajouter mes propres tuiles… dans Laz2omap.')}</p>` +
+    `<p class="muted">${T('Get it from their website, then use Add my own tiles… in Laz2omap.', 'Obtenez-le sur leur site, puis utilisez Ajouter mes propres tuiles… dans Laz2omap.')}</p>` +
     `<a class="btn req" style="font-size:13px;padding:6px 10px" href="${req(name)}" target="_blank" rel="noopener">🌍 ${T('Ask for automatic download', 'Demander le téléchargement automatique')}</a>`;
 }
 fetch('coverage.geojson').then(r => r.json()).then(gj => {
