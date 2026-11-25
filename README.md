@@ -6,7 +6,9 @@
 Laz2omap finds the lidar of your area, downloads it, and makes a draft map (ISOM 2017-2 / ISSprOM 2019) that you
 then check in the field and finish in OpenOrienteering Mapper. **[🗺 See where the lidar is](https://laz2omap.github.io/laz2omap/)**
 
-**Latest version: [Laz2omap 5.52.3](https://github.com/laz2omap/laz2omap/releases/latest)** (2026-11-24): [what's new](https://github.com/laz2omap/laz2omap/releases/latest) / **Dernière version : [Laz2omap 5.52.3](https://github.com/laz2omap/laz2omap/releases/latest)** (2026-11-24) : [nouveautés](https://github.com/laz2omap/laz2omap/releases/latest)
+<p align="center"><a href="https://github.com/laz2omap/laz2omap/releases"><img src="https://img.shields.io/github/downloads/laz2omap/laz2omap/total?label=downloads&amp;color=e8417d" alt="Total downloads of every Laz2omap release"></a></p>
+
+**Latest version: [Laz2omap 5.53.0](https://github.com/laz2omap/laz2omap/releases/latest)** (2026-11-25): [what's new](https://github.com/laz2omap/laz2omap/releases/latest) / **Dernière version : [Laz2omap 5.53.0](https://github.com/laz2omap/laz2omap/releases/latest)** (2026-11-25) : [nouveautés](https://github.com/laz2omap/laz2omap/releases/latest)
 
 <p align="center"><img src="cycle_en.png" width="600" alt="Laz2omap produces and adjusts the draft map, you check it in the field, finish it in OpenOrienteering Mapper, and bring bulk adjustments back to Laz2omap"></p>
 
